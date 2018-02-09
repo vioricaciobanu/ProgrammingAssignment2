@@ -7,14 +7,14 @@
 ## x.getInv() returns the inverse from the cache
 
 makeCacheMatrix <- function(x = matrix()) {
-  inv <- NULL
-  set <- function(y){
-    x <<- y
-    inv <<- NULL
-  }
-  get <- function() x
-  getInv <- function() inv
-  list(set = set, get = get, getInv = getInv)
+	inv <- NULL
+	set <- function(y){
+		x <<- y
+		inv <<- NULL
+	}
+	get <- function() x
+	getInv <- function() inv
+	list(set = set, get = get, getInv = getInv)
 }
 
 ## the matrix is stored in data <- x$get())
@@ -27,18 +27,17 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-  inv <- x$getInv()
-  if (!is.null(inv)){
-    message("cached data")
-    return(inv)
-  }
-  data <- x$get()
-  if (det(data) == 0){
-    message("Determinant is 0! Choose another matrix!") 
-  }
-  else{
-    inv <- solve (data)
-    inv
-  }
-  
+	inv <- x$getInv()
+	if (!is.null(inv)){
+ 		message("cached data")
+    	return(inv)
+	}
+	data <- x$get()
+	if (det(data) == 0){
+    	message("Determinant is 0! Choose another matrix!") 
+  	}
+	else{
+    	inv <- solve (data)
+    	inv
+  	}  
 }
